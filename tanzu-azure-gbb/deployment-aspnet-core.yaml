@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aspnet-core
+  labels:
+    app: aspnet-core
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aspnet-core
+  template:
+    metadata:
+      labels:
+        app: aspnet-core
+    spec:
+      containers:
+      - name: aspnet-core
+        image: tanzuregistry.azurecr.io/aspnet-core
+      imagePullSecrets:
+      - name: tanzuregistry-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aspnet-core
+  labels:
+    app: aspnet-core
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: aspnet-core

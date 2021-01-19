@@ -9,7 +9,7 @@ az account set --subscription $subscription
 acr_user=$(az acr credential show --name $registry --query username --output tsv)
 acr_pass=$(az acr credential show --name $registry --query passwords[0].value --output tsv)
 
-kubectl create secret tanzuregistry tanzuregistry-secret \
+kubectl create secret docker-registry tanzuregistry-secret \
 	--docker-server=${acr_server} \
 	--docker-username=${acr_user} \
 	--docker-password=${acr_pass} \
