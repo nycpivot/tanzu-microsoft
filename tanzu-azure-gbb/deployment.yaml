@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-music
+  labels:
+    app: spring-music
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-music
+  template:
+    metadata:
+      labels:
+        app: spring-music
+    spec:
+      containers:
+      - name: spring-music
+        image: tanzuregistry.azurecr.io/spring-music
+      imagePullSecrets:
+      - name: tanzuregistry-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-music
+  labels:
+    app: spring-music
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: spring-music
