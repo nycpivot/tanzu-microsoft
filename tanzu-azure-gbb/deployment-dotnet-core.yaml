@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-core
+  labels:
+    app: dotnet-core
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dotnet-core
+  template:
+    metadata:
+      labels:
+        app: dotnet-core
+    spec:
+      containers:
+      - name: dotnet-core
+        image: tanzuregistry.azurecr.io/dotnet-core
+      imagePullSecrets:
+      - name: tanzuregistry-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-core
+  labels:
+    app: dotnet-core
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: dotnet-core
