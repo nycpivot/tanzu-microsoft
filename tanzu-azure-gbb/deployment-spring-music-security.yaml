@@ -17,13 +17,20 @@ spec:
       containers:
       - name: spring-music-security
         image: tanzuregistry.azurecr.io/spring-music
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
         volumeMounts:
         - name: sec-ctx-vol
           mountPath: /data/demo
         securityContext:
-          allowPrivilegeEscalation: false
-       volumes:
-       - name: sec-ctx-vol
-         emptyDir: {}
+          allowPrivilegeEscalation: true
+      volumes:
+      - name: sec-ctx-vol
+        emptyDir: {}
       imagePullSecrets:
       - name: tanzuregistry-secret

@@ -11,30 +11,18 @@ kubectl delete ns vmware-system-tmc
 kubectl delete deployment spring-music
 kubectl delete svc spring-music
 kubectl delete deployment spring-music-quota
+kubectl delete deployment spring-music-security
 
 kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
 kubectl delete ns vmware-system-tmc
 kubectl delete deployment aspnet-core
 kubectl delete svc aspnet-core
-kubectl delete deployment spring-music-quota
+kubectl delete deployment aspnet-core-quota
+kubectl delete deployment aspnet-core-security
 
 kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
 kubectl delete ns vmware-system-tmc
 kubectl delete deployment aspnet-core
 kubectl delete svc aspnet-core
-
-
-AZURE SPRING CLOUD
-
-what parts are modular, vs complete end to end (github actions), how easy to plugin
-
-why not openshift, azure redhat openshift
-
-why not rancher, anthos, cluster lifecycle mgmt
-
-
-
-
-app development 
-
-governance ops, some dev, some infrastucture
+kubectl delete deployment aspnet-core-quota
+kubectl delete deployment aspnet-core-security

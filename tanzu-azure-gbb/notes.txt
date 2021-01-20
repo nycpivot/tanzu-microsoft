@@ -1,0 +1,12 @@
+what parts are modular, vs complete end to end (github actions), how easy to plugin
+
+why not openshift, azure redhat openshift
+
+why not rancher, anthos, cluster lifecycle mgmt
+
+
+
+
+app development 
+
+governance ops, some dev, some infrastucture

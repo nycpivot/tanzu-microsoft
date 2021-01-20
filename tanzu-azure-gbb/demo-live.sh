@@ -34,8 +34,8 @@ kp build logs aspnet-core
 kubectl config use-context tanzu-azure-aks-spring-music
 kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=688fc86507993ab69a37ece187c72887224ec74999b46494b37c96a42fe279cc&source=attach"
 
-#QUOTA POLICY
 kubectl apply -f deployment-spring-music-quota.yaml
+
 
 kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
 kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=1ad1b30df5d392e67cbf80cbfd3ad579604ccff1e07c6db973514cd9b0024422&source=attach"
@@ -43,11 +43,17 @@ kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=1ad1b30df5
 kubectl apply -f deployment-spring-music-quota.yaml
 
 
+kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=1ad1b30df5d392e67cbf80cbfd3ad579604ccff1e07c6db973514cd9b0024422&source=attach"
+
+kubectl apply -f deployment-aspnet-core.yaml
+
+
 #ATTACH TKG
 kubectl config use-context tanzu-azure-tkg-spring-music-admin@tanzu-azure-tkg-aspnet-core
 kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=c8b409e634e7ac8910b947dc085d332d93ee2a2f4a481d3f2912dbecbcf6910b&source=attach"
 
-
+kubectl apply -f deployment-aspnet-core-quota.yaml
 
 
 
