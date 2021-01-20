@@ -10,15 +10,15 @@ kubectl config use-context tanzu-azure-aks-spring-music
 kubectl delete ns vmware-system-tmc
 kubectl delete deployment spring-music
 kubectl delete svc spring-music
+kubectl delete deployment spring-music-quota
 
-
-kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
 kubectl delete ns vmware-system-tmc
 kubectl delete deployment aspnet-core
 kubectl delete svc aspnet-core
+kubectl delete deployment spring-music-quota
 
-
-kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
+kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
 kubectl delete ns vmware-system-tmc
 kubectl delete deployment aspnet-core
 kubectl delete svc aspnet-core
