@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-music-quota
+  name: spring-music-security
   labels:
-    app: spring-music-quota
+    app: spring-music-security
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: spring-music-quota
+      app: spring-music-security
   template:
     metadata:
       labels:
-        app: spring-music-quota
+        app: spring-music-security
     spec:
       containers:
-      - name: spring-music-quota
+      - name: spring-music-security
         image: tanzuregistry.azurecr.io/spring-music
         volumeMounts:
         - name: sec-ctx-vol
