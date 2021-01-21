@@ -17,6 +17,8 @@ spec:
       containers:
       - name: aspnet-core
         image: tanzuregistry.azurecr.io/aspnet-core
+        securityContext:
+          allowPrivilegeEscalation: false
         resources:
           requests:
             memory: "512Mi"
