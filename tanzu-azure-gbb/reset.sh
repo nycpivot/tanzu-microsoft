@@ -5,24 +5,25 @@ kp image delete spring-music
 kp image delete aspnet-core
 
 
-#TANZU KUBERNETES GRID CLUSTERS
-kubectl config use-context tanzu-azure-aks-spring-music
-kubectl delete ns vmware-system-tmc
-kubectl delete deployment spring-music
-kubectl delete svc spring-music
-kubectl delete deployment spring-music-quota
-kubectl delete deployment spring-music-security
+#AKS
+read -p "Azure Username: " az_username
+read -p "Azure Password: " az_password
+read -p "Azure Subscription: " subscription
+read -p "Azure Resource Group: " group
+read -p "AKS Cluster Name (tanzu-azure-aks-spring-music): " cluster
 
-kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
-kubectl delete ns vmware-system-tmc
-kubectl delete deployment aspnet-core
-kubectl delete svc aspnet-core
-kubectl delete deployment aspnet-core-quota
-kubectl delete deployment aspnet-core-security
+az login -u $az_username -p $az_password
+az account set --subscription $subscription
 
-kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
-kubectl delete ns vmware-system-tmc
-kubectl delete deployment aspnet-core
-kubectl delete svc aspnet-core
-kubectl delete deployment aspnet-core-quota
-kubectl delete deployment aspnet-core-security
+az aks delete --name $cluster --resource-group group
+
+#TKG
+sudo tkg delete cluster tanzu-azure-tkg-aspnet-core
+
+#GKE
+gcloud auth login
+
+read -p "Logging into GCP..." var1
+
+gcloud config set project pa-mjames
+gcloud container clusters delete "tanzu-azure-gke-aspnet-core" --region "us-east1"
