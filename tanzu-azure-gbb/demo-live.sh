@@ -10,18 +10,9 @@ kp image list
 kp image create spring-music --tag tanzuregistry.azurecr.io/spring-music --git https://github.com/cloudfoundry-samples/spring-music.git
 kp image create aspnet-core --tag tanzuregistry.azurecr.io/aspnet-core --git https://github.com/nycpivot/dotnet-docker.git
 
-#TKG
-tkg get clusters
+kubectl config get-contexts
 
-#AKS
-#az login 
-az aks list --query "[?resourceGroup=='tanzu-azure'].{name:name, state:provisioningState, k8s:kubernetesVersion}" --output table
-
-#GKE
-#gcloud auth login
-gcloud config set project pa-mjames
-gcloud container clusters list
-
+#CHECK STATUS OF IMAGES
 kp image status spring-music
 kp build logs spring-music
 
@@ -31,29 +22,23 @@ kp build logs aspnet-core
 
 
 #PRE-DEMO - TMC - ATTACH CLUSTERS
+read -p "tmc tanzu-azure-aks-spring-music attach url: " aks_attach_url
+
 kubectl config use-context tanzu-azure-aks-spring-music
-kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=688fc86507993ab69a37ece187c72887224ec74999b46494b37c96a42fe279cc&source=attach"
+kubectl create -f $aks_attach_url
 
-kubectl apply -f deployment-spring-music-quota.yaml
+#kubectl apply -f deployment-spring-music-quota.yaml
 
+
+read -p "tmc tanzu-azure-gke-aspnet-core attach url: " gke_attach_url
 
 kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
-kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=1ad1b30df5d392e67cbf80cbfd3ad579604ccff1e07c6db973514cd9b0024422&source=attach"
+kubectl create -f $gke_attach_url
 
-kubectl apply -f deployment-spring-music-quota.yaml
-
-
-kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
-kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=1ad1b30df5d392e67cbf80cbfd3ad579604ccff1e07c6db973514cd9b0024422&source=attach"
-
-kubectl apply -f deployment-aspnet-core.yaml
+#kubectl apply -f deployment-spring-music-quota.yaml
 
 
-#ATTACH TKG
-kubectl config use-context tanzu-azure-tkg-spring-music-admin@tanzu-azure-tkg-aspnet-core
-kubectl create -f "https://nycpivot.tmc.cloud.vmware.com/installer?id=c8b409e634e7ac8910b947dc085d332d93ee2a2f4a481d3f2912dbecbcf6910b&source=attach"
-
-kubectl apply -f deployment-aspnet-core-quota.yaml
+read -p "Setup tanzu-azure-tkg-aspnet-core in portal" ok
 
 
 
