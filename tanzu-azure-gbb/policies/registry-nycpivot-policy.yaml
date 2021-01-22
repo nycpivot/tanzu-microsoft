@@ -1,0 +1,11 @@
+fullName:
+  name: registry-nycpivot
+spec:
+  input:
+    audit: false
+    rules:
+    - hostname: tanzuregistry.azurecr.io
+      imageName: '*'
+  recipe: custom
+  type: image-policy
+ 
