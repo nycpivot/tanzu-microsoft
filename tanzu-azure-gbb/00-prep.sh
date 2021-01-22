@@ -1,22 +1,18 @@
 #CREATE AKS CLUSTER
 read -p "Azure Username: " az_username
 read -p "Azure Password: " az_password
-read -p "Azure Subscription: " subscription
-read -p "Azure Resource Group: " group
-read -p "AKS Cluster Name (tanzu-azure-aks-spring-music): " cluster
-read -p "ACR Registry Name (tanzuregistry): " registry
 
 az login -u $az_username -p $az_password
-az account set --subscription $subscription
+az account set --subscription PA-mjames
 
-az aks delete --name $cluster --resource-group $group
+az aks delete --name tanzu-azure-aks-spring-music --resource-group tanzu-azure
 
-az aks create --name $cluster --resource-group $group --node-count 3 \
-	--attach-acr $registry --enable-addons monitoring \
+az aks create --name tanzu-azure-aks-spring-music --resource-group tanzu-azure --node-count 3 \
+	--attach-acr tanzuregistry --enable-addons monitoring \
 	--network-plugin kubenet --network-policy calico \
 	--generate-ssh-keys
 
-az aks get-credentials --name $cluster --resource-group $group
+az aks get-credentials --name tanzu-azure-aks-spring-music --resource-group tanzu-azure
 
 
 #CREATE TKG CLUSTER
