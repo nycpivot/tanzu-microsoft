@@ -2,6 +2,8 @@
 read -p "Azure Username: " az_username
 read -p "Azure Password: " az_password
 
+sudo rmdir -rf .kube
+
 az login -u $az_username -p $az_password
 az account set --subscription PA-mjames
 
