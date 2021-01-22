@@ -51,7 +51,7 @@ tmc clustergroup security-policy delete security-production-policy --cluster-gro
 tmc organization image-policy delete registry-nycpivot-policy
 
 
-read -p "tmc tanzu-azure-tkg-spring-music attach url: " tkg_attach_url
+read -p "tmc tanzu-azure-tkg-aspnet-core attach url: " tkg_attach_url
 
 kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
 #$tkg_attach_url
