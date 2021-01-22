@@ -75,6 +75,11 @@ wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/deployment-spring-music-quota.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/deployment-spring-music-security.yaml
 
+rm network-web-policy.yaml
+rm quota-development-policy.yaml
+rm registry-nycpivot-policy.yaml
+rm security-production-policy.yaml
+
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/network-web-policy.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/quota-development-policy.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/registry-nycpivot-policy.yaml
