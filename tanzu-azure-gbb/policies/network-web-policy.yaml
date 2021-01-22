@@ -1,0 +1,11 @@
+fullName:
+  name: network-database
+  workspaceName: database
+spec:
+  input:
+    to_pod_labels:
+    - key: app
+      value: spring-music
+  recipe: deny-all-to-pods
+  type: network-policy
+  
