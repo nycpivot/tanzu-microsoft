@@ -21,7 +21,10 @@ az aks get-credentials --name $cluster --resource-group $group
 
 #CREATE TKG CLUSTER
 sudo tkg delete cluster tanzu-azure-tkg-aspnet-core
-read -p "Deleting cluster..."
+sleep 15m
+
+tkg get clusters
+read -p "PRESS ANY KEY TO CONTINUE" ok
 
 sudo tkg create cluster tanzu-azure-tkg-aspnet-core --plan prod
 tkg get credentials tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
