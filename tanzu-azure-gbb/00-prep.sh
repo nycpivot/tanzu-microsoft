@@ -42,6 +42,12 @@ kp image delete aspnet-core
 
 
 #TMC
+tmc clustergroup namespace-quota-policy delete quota-development-policy --cluster-group-name development
+tmc clustergroup security-policy delete security-production-policy --cluster-group-name production
+#tmc workspace network-policy delete network-database-policy --workspace-name database
+tmc organization image-policy delete registry-nycpivot-policy
+
+
 read -p "tmc tanzu-azure-tkg-spring-music attach url: " tkg_attach_url
 
 kubectl config use-context tanzu-azure-tkg-spring-music
@@ -51,6 +57,8 @@ read -p "tmc tanzu-azure-gke-aspnet-core attach url: " gke_attach_url
 
 kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
 kubectl create -f $gke_attach_url
+
+
 
 
 #DOWNLOAD FILES
@@ -66,3 +74,8 @@ wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/deployment-spring-music.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/deployment-spring-music-quota.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/deployment-spring-music-security.yaml
+
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/network-web-policy.yaml
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/quota-development-policy.yaml
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/registry-nycpivot-policy.yaml
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/security-production-policy.yaml

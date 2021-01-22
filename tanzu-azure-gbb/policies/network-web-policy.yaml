@@ -1,5 +1,5 @@
 fullName:
-  name: network-database
+  name: network-database-policy
   workspaceName: database
 spec:
   input:

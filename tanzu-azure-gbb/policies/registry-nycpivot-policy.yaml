@@ -1,5 +1,5 @@
 fullName:
-  name: registry-nycpivot
+  name: registry-nycpivot-policy
 spec:
   input:
     audit: false

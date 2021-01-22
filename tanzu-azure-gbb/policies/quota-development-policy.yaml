@@ -1,6 +1,6 @@
 fullName:
   clusterGroupName: development
-  name: quota-development
+  name: quota-development-policy
 spec:
   input:
     limits_cpu: 250m

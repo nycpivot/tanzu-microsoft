@@ -1,6 +1,6 @@
 fullName:
   clusterGroupName: production
-  name: security-production
+  name: security-production-policy
 spec:
   input:
     allow_host_namespace_sharing: false
