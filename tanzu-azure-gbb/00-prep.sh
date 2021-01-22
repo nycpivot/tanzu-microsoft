@@ -19,8 +19,8 @@ az aks create --name tanzu-azure-aks-spring-music --resource-group tanzu-azure -
 	--generate-ssh-keys
 az aks get-credentials --name tanzu-azure-aks-spring-music --resource-group tanzu-azure
 
-acr_user=$(az acr credential show --name $registry --query username --output tsv)
-acr_pass=$(az acr credential show --name $registry --query passwords[0].value --output tsv)
+acr_user=$(az acr credential show --name tanzuregistry --query username --output tsv)
+acr_pass=$(az acr credential show --name tanzuregistry --query passwords[0].value --output tsv)
 
 kubectl config use-context tanzu-azure-aks-spring-music
 
