@@ -34,7 +34,7 @@ tkg get clusters
 read -p "PRESS ANY KEY TO CONTINUE" ok
 
 sudo tkg create cluster tanzu-azure-tkg-aspnet-core --plan prod
-tkg get credentials tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+tkg get credentials tanzu-azure-tkg-aspnet-core
 
 
 #DELETE KP IMAGES
@@ -43,22 +43,26 @@ kp image delete spring-music
 kp image delete aspnet-core
 
 
-#TMC
+#TMC - TKG, GKE
 tmc clustergroup namespace-quota-policy delete quota-development-policy --cluster-group-name development
 tmc clustergroup security-policy delete security-production-policy --cluster-group-name production
-#tmc workspace network-policy delete network-database-policy --workspace-name database
+tmc workspace network-policy delete network-database-policy --workspace-name database
 tmc organization image-policy delete registry-nycpivot-policy
 
 
-#read -p "tmc tanzu-azure-tkg-aspnet-core attach url: " tkg_attach_url
+read -p "tmc tanzu-azure-tkg-aspnet-core attach url: " tkg_attach_url
 
-#kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
-#$tkg_attach_url
+kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+$tkg_attach_url
+
+sleep 5m
 
 read -p "tmc tanzu-azure-gke-aspnet-core attach url: " gke_attach_url
 
 kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
 $gke_attach_url
+
+sleep 5m
 
 
 #DOWNLOAD FILES
