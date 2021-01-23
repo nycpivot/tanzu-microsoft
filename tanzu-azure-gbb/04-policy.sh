@@ -12,7 +12,7 @@
 #
 # speed at which to simulate typing. bigger num = faster
 #
-TYPE_SPEED=10
+TYPE_SPEED=15
 
 #
 # custom prompt
@@ -24,39 +24,84 @@ TYPE_SPEED=10
 # hide the evidence
 clear
 
-DEMO_PROMPT="${GREEN}➜ TMC POLICY ${YELLOW}\W "
+DEMO_PROMPT="${GREEN}➜ TMC ${CYAN}\W "
 
 
 #TMC POLICY
 
+kubectl config use-context tanzu-azure-aks-spring-music
+
+#-setup namespaces
+pe "tmc cluster namespace create --name spring-app --workspace-name application --cluster-name tanzu-azure-aks-spring-music --provisioner-name attached --management-cluster-name attached"
+pe "tmc cluster namespace create --name spring-web --workspace-name web --cluster-name tanzu-azure-aks-spring-music --provisioner-name attached --management-cluster-name attached"
+pe "tmc cluster namespace create --name spring-data --workspace-name web --cluster-name tanzu-azure-aks-spring-music --provisioner-name attached --management-cluster-name attached"
+#VIEW IN PORTAL
+
+pe "kubectl get ns"
+
 #-image registry
-pe "kubectl run nginx --image nginx"
-pe "kubectl get pods"
+kubectl run nginx-app --image nginx -n spring-app
+kubectl get pods -n spring-app
 cmd
-pe "kubectl delete pod nginx"
-#tmc organization image-policy create -r custom -i --dry-run
-pe "tmc organization image-policy create -f registry-nycpivot-policy.yaml"
-pe "kubectl run nginx --image nginx"
-pe "kubectl delete pod nginx"
+kubectl delete pod nginx-app -n spring-app
+
+pe "tmc organization image-policy create -f registry-nycpivot-policy.yaml" # -i --dry-run
+#VIEW IN PORTAL
+
+kubectl run nginx-app --image nginx -n spring-app
+cmd
+
+pe "tmc organization image-policy delete registry-nycpivot-policy"
+
+echo
+echo
+
+#-network policy
+kubectl run nginx-web --image nginx -n spring-web --labels app=spring-web
+kubectl run nginx-data --image nginx -n spring-data
+kubectl get pods -n spring-web
+cmd
+kubectl get pods -n spring-data -o wide
+cmd
+
+pe "kubectl exec nginx-web -it -n spring-web -- sh"
+#curl ip
+
+pe "tmc workspace network-policy create -f network-database-policy.yaml" # -i --dry-run
+
+pe "kubectl exec nginx-web -it -n spring-web -- sh"
+#curl ip
+
+
+
 
 
 #-quota policy
-#tmc clustergroup namespace-quota-policy create -r custom -i --cluster-group-name development --dry-run
-pe "tmc clustergroup namespace-quota-policy create -f quota-development-policy.yaml"
+pe "tmc clustergroup namespace-quota-policy create -f quota-development-policy.yaml" # -i --dry-run
 
 pe "kubectl config use-context tanzu-azure-aks-spring-music"
 pe "cat deployment-spring-music-quota.yaml"
 pe "kubectl apply -f deployment-spring-music-quota.yaml"
 
-pe "kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core"
-pe "kubectl apply -f deployment-spring-music-quota.yaml.yaml"
+echo
+echo
 
-pe "kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core"
-pe "kubectl apply -f deployment-spring-music-quota.yaml.yaml"
+kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
+kubectl apply -f deployment-spring-music-quota.yaml
+
+echo
+echo
+
+kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+kubectl apply -f deployment-spring-music-quota.yaml
+
+echo
+echo
 
 
-#-network policy
-#tmc clustergroup security-policy create -r custom -i --cluster-group-name production --dry-run
-pe "tmc clustergroup security-policy create -f security-production-policy.yaml"
+#-security policy
+pe "tmc clustergroup security-policy create -f security-production-policy.yaml" # -i --dry-run
+
+
 
 

@@ -12,7 +12,7 @@
 #
 # speed at which to simulate typing. bigger num = faster
 #
-TYPE_SPEED=10
+TYPE_SPEED=12
 
 #
 # custom prompt
@@ -26,7 +26,7 @@ clear
 
 
 #TBS
-DEMO_PROMPT="${GREEN}➜ TBS ${ORANGE}\W "
+DEMO_PROMPT="${GREEN}➜ TBS ${CYAN}\W "
 
 pe "kubectl config use-context tanzu-build-service"
 
@@ -35,13 +35,14 @@ pe "kp image list"
 #CREATE IMAGES NOW - DURING EXECUTION EXPLAIN COMMAND PARAMS, LIST ALL TARGET CLUSTERS, CHECK STATUS or CHECK BUILD LOGS
 pe "kp image create spring-music --tag tanzuregistry.azurecr.io/spring-music --git https://github.com/cloudfoundry-samples/spring-music.git"
 pe "kp image create aspnet-core --tag tanzuregistry.azurecr.io/aspnet-core --git https://github.com/nycpivot/dotnet-docker.git"
-#pe "kp image create aspnet-core-live --tag tanzuregistry.azurecr.io/aspnet-core-live --git https://github.com/nycpivot/dotnet-docker.git"
 
 pe "kubectl config get-contexts --output name"
+echo
 
 pe "kp image status spring-music"
 pe "kp image status aspnet-core"
-#pe "kp image status aspnet-core-live"
+
+pe "kp image list"
 
 #pe "kp build logs spring-music"
 

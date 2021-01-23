@@ -12,7 +12,7 @@
 #
 # speed at which to simulate typing. bigger num = faster
 #
-TYPE_SPEED=10
+TYPE_SPEED=12
 
 #
 # custom prompt
@@ -25,9 +25,9 @@ TYPE_SPEED=10
 clear
 
 #TMC PORTAL - ATTACH AKS CLUSTER
-DEMO_PROMPT="${GREEN}➜ TMC-AKS ${CYAN}\W "
-
 pe "kubectl config use-context tanzu-azure-aks-spring-music"
+DEMO_PROMPT="${GREEN}➜ AKS ${CYAN}\W "
+
 pe "kubectl get ns"
 
 #ATTACH AKS CLUSTER IN TMC PORTAL, GET THE LINK

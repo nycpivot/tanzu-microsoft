@@ -71,6 +71,10 @@ kubectl config use-context tanzu-build-service
 kp image delete spring-music
 kp image delete aspnet-core
 
+#-create backup images
+pe "kp image create spring-music-dryrun --tag tanzuregistry.azurecr.io/spring-music-dryrun --git https://github.com/cloudfoundry-samples/spring-music.git"
+pe "kp image create aspnet-core-dryrun --tag tanzuregistry.azurecr.io/aspnet-core-dryrun --git https://github.com/nycpivot/dotnet-docker.git"
+
 
 #TMC - TKG, GKE
 tmc clustergroup namespace-quota-policy delete quota-development-policy --cluster-group-name development

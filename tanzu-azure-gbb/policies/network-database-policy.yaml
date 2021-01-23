@@ -5,7 +5,6 @@ spec:
   input:
     to_pod_labels:
     - key: app
-      value: spring-music
+      value: spring-web
   recipe: deny-all-to-pods
   type: network-policy
-  

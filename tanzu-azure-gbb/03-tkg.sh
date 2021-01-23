@@ -12,7 +12,7 @@
 #
 # speed at which to simulate typing. bigger num = faster
 #
-TYPE_SPEED=15
+TYPE_SPEED=20
 
 #
 # custom prompt
@@ -25,24 +25,34 @@ TYPE_SPEED=15
 clear
 
 #TKG - DEPLOY APPS
-DEMO_PROMPT="${GREEN}➜ TKG APPLY ${YELLOW}\W "
-
 pe "kubectl config use-context tanzu-azure-aks-spring-music"
+DEMO_PROMPT="${GREEN}➜ APPLY AKS ${CYAN}\W "
+
 pe "cat deployment-spring-music.yaml"
+echo
+echo
 pe "kubectl apply -f deployment-spring-music.yaml"
 
-pe "kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core"
-pe "kubectl apply -f deployment-aspnet-core.yaml"
-
-pe "kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core"
-pe "kubectl apply -f deployment-aspnet-core.yaml"
-
-
-pe "kubectl config use-context tanzu-azure-aks-spring-music"
-pe "kubectl get svc spring-music"
 
 pe "kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core"
-pe "kubectl get svc aspnet-core"
+DEMO_PROMPT="${GREEN}➜ APPLY GKE ${CYAN}\W "
+
+pe "kubectl apply -f deployment-aspnet-core.yaml"
+
 
 pe "kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core"
-pe "kubectl get svc aspnet-core"
+DEMO_PROMPT="${GREEN}➜ APPLY TKG ${CYAN}\W "
+
+pe "kubectl apply -f deployment-aspnet-core.yaml"
+
+
+DEMO_PROMPT="${COLOR_RESET}➜ APPLY TKG ${CYAN}\W "
+
+kubectl config use-context tanzu-azure-aks-spring-music
+kubectl get svc spring-music
+
+kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
+kubectl get svc aspnet-core
+
+kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+kubectl get svc aspnet-core
