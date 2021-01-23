@@ -37,6 +37,7 @@ pe "kubectl delete pod nginx"
 #tmc organization image-policy create -r custom -i --dry-run
 pe "tmc organization image-policy create -f registry-nycpivot-policy.yaml"
 pe "kubectl run nginx --image nginx"
+pe "kubectl delete pod nginx"
 
 
 #-quota policy
