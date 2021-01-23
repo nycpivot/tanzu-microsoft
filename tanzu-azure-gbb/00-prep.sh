@@ -78,6 +78,10 @@ tmc clustergroup security-policy delete security-production-policy --cluster-gro
 tmc workspace network-policy delete network-database-policy --workspace-name database
 tmc organization image-policy delete registry-nycpivot-policy
 
+tmc cluster delete tanzu-azure-gke-aspnet-core
+tmc cluster delete tanzu-azure-tkg-aspnet-core
+tmc cluster delete tanzu-azure-aks-aspnet-core
+
 
 read -p "tmc tanzu-azure-tkg-aspnet-core attach url: " tkg_attach_url
 
