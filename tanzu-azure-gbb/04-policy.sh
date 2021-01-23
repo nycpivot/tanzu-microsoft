@@ -40,7 +40,8 @@ pe "tmc cluster namespace create --name spring-data --workspace-name web --clust
 pe "kubectl get ns"
 
 #-image registry
-kubectl run nginx-app --image nginx -n spring-app
+cmd
+pe "kubectl run nginx-app --image nginx -n spring-app"
 kubectl get pods -n spring-app
 cmd
 kubectl delete pod nginx-app -n spring-app

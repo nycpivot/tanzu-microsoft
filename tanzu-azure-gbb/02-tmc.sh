@@ -30,6 +30,8 @@ DEMO_PROMPT="${GREEN}➜ AKS ${CYAN}\W "
 
 pe "kubectl get ns"
 
+cmd
+
 #ATTACH AKS CLUSTER IN TMC PORTAL, GET THE LINK
 #pe "tmc cluster attach --name tanzu-azure-aks-spring-music --cluster-group development"
 

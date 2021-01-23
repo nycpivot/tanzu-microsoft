@@ -1,0 +1,17 @@
+fullName:
+  clusterName: tanzu-azure-aks-spring-music
+  managementClusterName: attached
+  name: spring-web
+  provisionerName: attached
+meta:
+  annotations:
+    vmware.tanzu.manage.template: default
+  description: ""
+  labels: null
+spec:
+  workspaceName: web
+type:
+  kind: Namespace
+  package: vmware.tanzu.manage.v1alpha1.cluster.namespace
+  version: v1alpha1
+ 

@@ -120,11 +120,17 @@ rm network-web-policy.yaml
 rm quota-development-policy.yaml
 rm registry-nycpivot-policy.yaml
 rm security-production-policy.yaml
+rm namespace-spring-web.yaml
+rm namespace-spring-app.yaml
+rm namespace-spring-data.yaml
 
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/network-web-policy.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/quota-development-policy.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/registry-nycpivot-policy.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/security-production-policy.yaml
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/namespace-spring-web.yaml
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/namespace-spring-app.yaml
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/namespace-spring-data.yaml
 
 rm 01-tbs.sh
 rm 02-tmc.sh
