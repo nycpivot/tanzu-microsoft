@@ -24,6 +24,9 @@ TYPE_SPEED=10
 # hide the evidence
 clear
 
+DEMO_PROMPT="${GREEN}➜ TMC POLICY ${YELLOW}\W "
+
+
 #TMC - CREATE POLICIES
 #tmc clustergroup namespace-quota-policy create -r custom -i --cluster-group-name development --dry-run
 pe "tmc clustergroup namespace-quota-policy create -f quota-development-policy.yaml"

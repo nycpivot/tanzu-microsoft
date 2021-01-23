@@ -26,7 +26,7 @@ clear
 
 
 #TBS
-DEMO_PROMPT="${GREEN}➜ TBS ${BLUE}\W "
+DEMO_PROMPT="${GREEN}➜ TBS ${ORANGE}\W "
 
 pe "kubectl config use-context tanzu-build-service"
 

@@ -25,7 +25,7 @@ TYPE_SPEED=10
 clear
 
 #TKG - DEPLOY APPS
-DEMO_PROMPT="${GREEN}➜ APPLY ${YELLOW}\W "
+DEMO_PROMPT="${GREEN}➜ TKG APPLY ${YELLOW}\W "
 
 pe "kubectl config use-context tanzu-azure-aks-spring-music"
 
