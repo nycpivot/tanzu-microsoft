@@ -122,4 +122,12 @@ wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/registry-nycpivot-policy.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/policies/security-production-policy.yaml
 
-rm 01-
+rm 01-tbs.sh
+rm 02-tmc.sh
+rm 03-tkg.sh
+rm 04-policy.sh
+
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/01-tbs.sh
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/02-tmc.sh
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/03-tkg.sh
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/04.policy.sh
