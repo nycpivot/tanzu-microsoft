@@ -32,9 +32,9 @@ DEMO_PROMPT="${GREEN}➜ TMC ${CYAN}\W "
 kubectl config use-context tanzu-azure-aks-spring-music
 
 #-setup namespaces
-pe "tmc cluster namespace create --name spring-app --workspace-name application --cluster-name tanzu-azure-aks-spring-music --provisioner-name attached --management-cluster-name attached"
-pe "tmc cluster namespace create --name spring-web --workspace-name web --cluster-name tanzu-azure-aks-spring-music --provisioner-name attached --management-cluster-name attached"
-pe "tmc cluster namespace create --name spring-data --workspace-name web --cluster-name tanzu-azure-aks-spring-music --provisioner-name attached --management-cluster-name attached"
+pe "tmc cluster namespace create -f namespace-spring-web.yaml"
+pe "tmc cluster namespace create -f namespace-spring-app.yaml"
+pe "tmc cluster namespace create -f namespace-spring-data.yaml"
 #VIEW IN PORTAL
 
 pe "kubectl get ns"
@@ -44,7 +44,8 @@ cmd
 pe "kubectl run nginx-app --image nginx -n spring-app"
 kubectl get pods -n spring-app
 cmd
-kubectl delete pod nginx-app -n spring-app
+pe "kubectl delete pod nginx-app -n spring-app"
+
 
 pe "tmc organization image-policy create -f registry-nycpivot-policy.yaml" # -i --dry-run
 #VIEW IN PORTAL
