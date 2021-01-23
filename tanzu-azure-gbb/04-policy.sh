@@ -32,6 +32,7 @@ DEMO_PROMPT="${GREEN}➜ TMC POLICY ${YELLOW}\W "
 #-image registry
 pe "kubectl run nginx --image nginx"
 pe "kubectl get pods"
+cmd
 pe "kubectl delete pod nginx"
 #tmc organization image-policy create -r custom -i --dry-run
 pe "tmc organization image-policy create -f registry-nycpivot-policy.yaml"
