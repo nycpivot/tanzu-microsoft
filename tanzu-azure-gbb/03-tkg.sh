@@ -30,28 +30,34 @@ DEMO_PROMPT="${GREEN}➜ APPLY AKS ${CYAN}\W "
 
 pe "cat deployment-spring-music.yaml"
 echo
-echo
+
 pe "kubectl apply -f deployment-spring-music.yaml"
+echo
 
-
-kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
+pe "kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core"
 DEMO_PROMPT="${GREEN}➜ APPLY GKE ${CYAN}\W "
+echo
 
-kubectl apply -f deployment-aspnet-core.yaml
-
+pe "kubectl apply -f deployment-aspnet-core.yaml"
+echo
 
 kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
 DEMO_PROMPT="${GREEN}➜ APPLY TKG ${CYAN}\W "
+echo
 
-pe kubectl apply -f deployment-aspnet-core.yaml
+pe "kubectl apply -f deployment-aspnet-core.yaml"
+echo
 
 DEMO_PROMPT="${COLOR_RESET}➜ APPLY TKG ${CYAN}\W "
 
 kubectl config use-context tanzu-azure-aks-spring-music
 kubectl get svc spring-music
+echo
 
 kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
 kubectl get svc aspnet-core
+echo
 
 kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
 kubectl get svc aspnet-core
+echo

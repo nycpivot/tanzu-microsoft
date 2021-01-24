@@ -24,6 +24,16 @@ TYPE_SPEED=18
 # hide the evidence
 clear
 
+DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
+pe "pe az acr repository list -n tanzuregistry"
+echo
+
+#TBS
+DEMO_PROMPT="${GREEN}➜ TBS ${CYAN}\W "
+
+pe "kubectl config use-context tanzu-build-service"
+echo
+
 
 DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
 pe "tkg get clusters"
@@ -46,6 +56,7 @@ DEMO_PROMPT="${GREEN}➜ TBS ${CYAN}\W "
 
 pe "kubectl config use-context tanzu-build-service"
 echo
+
 pe "kp image list"
 echo
 
