@@ -45,17 +45,6 @@ kubectl create secret docker-registry tanzuregistry-secret \
 	--docker-username=${acr_user} \
 	--docker-password=${acr_pass} \
 	--docker-email=mijames@vmware.com
-	
-
-#CREATE TKG CLUSTER
-sudo tkg delete cluster tanzu-azure-tkg-aspnet-core
-sleep 15m
-
-tkg get clusters
-read -p "PRESS ANY KEY TO CONTINUE" ok
-
-sudo tkg create cluster tanzu-azure-tkg-aspnet-core --plan prod
-tkg get credentials tanzu-azure-tkg-aspnet-core
 
 kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
 
@@ -70,6 +59,9 @@ kubectl create secret docker-registry tanzuregistry-secret \
 kubectl config use-context tanzu-build-service
 kp image delete spring-music
 kp image delete aspnet-core
+
+az acr repository delete -n tanzuregistry --image spring-music
+az acr repository delete -n tanzuregistry --image aspnet-core
 
 #-create backup images
 kp image create spring-music-dryrun --tag tanzuregistry.azurecr.io/spring-music-dryrun --git https://github.com/cloudfoundry-samples/spring-music.git
@@ -100,6 +92,15 @@ kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
 $gke_attach_url
 
 sleep 5m
+
+read -p "PRESS ANY KEY TO TO CREATE TKG SECRET" ok
+kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+
+kubectl create secret docker-registry tanzuregistry-secret \
+	--docker-server=${acr_server} \
+	--docker-username=${acr_user} \
+	--docker-password=${acr_pass} \
+	--docker-email=mijames@vmware.com
 
 
 #DOWNLOAD FILES
