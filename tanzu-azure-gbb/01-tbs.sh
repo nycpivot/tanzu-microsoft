@@ -48,8 +48,10 @@ echo
 pe "kp image status spring-music"
 echo
 
-pe "kp image status aspnet-core"
-echo
+pe "clear"
+
+#pe "kp image status aspnet-core"
+#echo
 
 DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
 pe "tkg get clusters"
