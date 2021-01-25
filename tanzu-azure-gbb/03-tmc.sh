@@ -68,5 +68,5 @@ echo
 pe "kubectl run nginx --image nginx --requests 'cpu=500m,memory=128Gi' --limits 'cpu=750m,memory=512Gi'"
 echo
 
-pe "kubectl run nginx --image nginx --requests 'cpu=200m,memory=1Gi' --limits 'cpu=250m,memory=1Gi'"
-echo
+#pe "kubectl run nginx --image nginx --requests 'cpu=200m,memory=1Gi' --limits 'cpu=250m,memory=1Gi'"
+#echo
