@@ -56,3 +56,5 @@ kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-asp
 DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
 echo
 
+echo "DELETE CLUSTERS IN TMC PORTAL
+
