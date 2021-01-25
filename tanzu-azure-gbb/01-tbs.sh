@@ -35,6 +35,8 @@ DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
 pe "az acr repository list -n tanzuregistry"
 echo
 
+pe "clear"
+
 pe "kp image list"
 echo
 
@@ -61,8 +63,12 @@ DEMO_PROMPT="${GREEN}➜ GKE ${CYAN}\W "
 pe "gcloud container clusters list --region us-east1 --format='table(name,master_version())'"
 echo
 
+pe "clear"
+
 pe "kp build logs spring-music"
 echo
+
+pe "clear"
 
 pe "kp image list"
 echo
@@ -70,3 +76,5 @@ echo
 DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
 pe "az acr repository list -n tanzuregistry"
 echo
+
+pe "clear"

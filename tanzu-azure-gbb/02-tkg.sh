@@ -32,6 +32,8 @@ echo
 pe "cat deployment-spring-music.yaml"
 echo
 
+pe "clear"
+
 pe "kubectl apply -f deployment-spring-music.yaml"
 echo
 
@@ -48,6 +50,8 @@ echo
 
 pe "kubectl apply -f deployment-aspnet-core.yaml"
 echo
+
+pe "clear"
 
 
 kubectl config use-context tanzu-azure-aks-spring-music
