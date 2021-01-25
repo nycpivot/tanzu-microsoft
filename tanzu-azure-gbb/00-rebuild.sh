@@ -131,14 +131,16 @@ wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/namespace-spring-app.yaml
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/namespace-spring-data.yaml
 
+rm 00-sanity-check.sh
 rm 01-tbs.sh
-rm 02-tmc.sh
-rm 03-tkg.sh
-rm 03-tkg-services.sh
+rm 02-tkg.sh
+rm 03-tmc.sh
 rm 04-policy.sh
 
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/00-sanity-check.sh.sh
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/01-tbs.sh
-wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/02-tmc.sh
-wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/03-tkg.sh
-wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/03-tkg-services.sh
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/02-tkg.sh
+wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/03-tmc.sh
 wget https://raw.githubusercontent.com/nycpivot/tanzu-microsoft/main/tanzu-azure-gbb/04-policy.sh
+
+alias k="kubectl"

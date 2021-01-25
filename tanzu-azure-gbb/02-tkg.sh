@@ -26,7 +26,8 @@ clear
 
 #TKG - DEPLOY APPS
 pe "kubectl config use-context tanzu-azure-aks-spring-music"
-DEMO_PROMPT="${GREEN}➜ APPLY AKS ${CYAN}\W "
+DEMO_PROMPT="${GREEN}➜ AKS ${CYAN}\W "
+echo
 
 pe "cat deployment-spring-music.yaml"
 echo
@@ -35,20 +36,19 @@ pe "kubectl apply -f deployment-spring-music.yaml"
 echo
 
 pe "kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core"
-DEMO_PROMPT="${GREEN}➜ APPLY GKE ${CYAN}\W "
+DEMO_PROMPT="${GREEN}➜ GKE ${CYAN}\W "
 echo
 
 pe "kubectl apply -f deployment-aspnet-core.yaml"
 echo
 
 kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
-DEMO_PROMPT="${GREEN}➜ APPLY TKG ${CYAN}\W "
+DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
 echo
 
 pe "kubectl apply -f deployment-aspnet-core.yaml"
 echo
 
-DEMO_PROMPT="${COLOR_RESET}➜ APPLY TKG ${CYAN}\W "
 
 kubectl config use-context tanzu-azure-aks-spring-music
 kubectl get svc spring-music

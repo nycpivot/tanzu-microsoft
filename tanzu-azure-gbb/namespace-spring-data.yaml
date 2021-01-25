@@ -9,7 +9,7 @@ meta:
   description: ""
   labels: null
 spec:
-  workspaceName: web
+  workspaceName: database
 type:
   kind: Namespace
   package: vmware.tanzu.manage.v1alpha1.cluster.namespace

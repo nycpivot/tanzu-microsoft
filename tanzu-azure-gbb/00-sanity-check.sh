@@ -24,27 +24,6 @@ TYPE_SPEED=18
 # hide the evidence
 clear
 
-
-#TBS
-DEMO_PROMPT="${GREEN}➜ TBS ${CYAN}\W "
-pe "kubectl config use-context tanzu-build-service"
-echo
-
-
-pe "kp image list"
-echo
-
-#CREATE IMAGES NOW - DURING EXECUTION EXPLAIN COMMAND PARAMS, LIST ALL TARGET CLUSTERS, CHECK STATUS or CHECK BUILD LOGS
-pe "kp image create spring-music --tag tanzuregistry.azurecr.io/spring-music --git https://github.com/cloudfoundry-samples/spring-music.git"
-pe "kp image create aspnet-core --tag tanzuregistry.azurecr.io/aspnet-core --git https://github.com/nycpivot/dotnet-docker.git"
-echo
-
-pe "kp image status spring-music"
-echo
-
-pe "kp image status aspnet-core"
-echo
-
 #-show registry and clusters while images are built
 DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
 pe "az acr repository list -n tanzuregistry"
@@ -62,12 +41,18 @@ DEMO_PROMPT="${GREEN}➜ GKE ${CYAN}\W "
 pe "gcloud container clusters list --region us-east1 --format='table(name,master_version())'"
 echo
 
-pe "kp build logs spring-music"
-echo
-
 pe "kp image list"
 echo
 
-DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
-pe "az acr repository list -n tanzuregistry"
+pe "kubectl config use-context tanzu-azure-aks-spring-music"
+DEMO_PROMPT="${GREEN}➜ AKS ${CYAN}\W "
 echo
+
+pe "kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core"
+DEMO_PROMPT="${GREEN}➜ GKE ${CYAN}\W "
+echo
+
+kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
+echo
+
