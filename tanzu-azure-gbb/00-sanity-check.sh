@@ -52,12 +52,21 @@ pe "kubectl config use-context tanzu-azure-aks-spring-music"
 DEMO_PROMPT="${GREEN}➜ AKS ${CYAN}\W "
 echo
 
+pe "kubectl get secrets"
+echo
+
 pe "kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core"
 DEMO_PROMPT="${GREEN}➜ GKE ${CYAN}\W "
 echo
 
-kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
+pe "kubectl get secrets"
+echo
+
+pe "kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core"
 DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
+echo
+
+pe "kubectl get secrets"
 echo
 
 echo "DELETE CLUSTERS IN TMC PORTAL"
