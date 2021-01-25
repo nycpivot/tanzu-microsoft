@@ -41,6 +41,10 @@ DEMO_PROMPT="${GREEN}➜ GKE ${CYAN}\W "
 pe "gcloud container clusters list --region us-east1 --format='table(name,master_version())'"
 echo
 
+pe "kubectl config use-context tanzu-build-service"
+DEMO_PROMPT="${GREEN}➜ TBS ${CYAN}\W "
+echo
+
 pe "kp image list"
 echo
 
@@ -56,5 +60,5 @@ kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-asp
 DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
 echo
 
-echo "DELETE CLUSTERS IN TMC PORTAL
+echo "DELETE CLUSTERS IN TMC PORTAL"
 
