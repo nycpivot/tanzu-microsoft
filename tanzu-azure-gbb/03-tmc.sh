@@ -39,6 +39,8 @@ cmd
 pe "kubectl get ns"
 echo
 
+pe "clear"
+
 DEMO_PROMPT="${GREEN}➜ TMC ${CYAN}\W "
 
 #-setup namespaces
