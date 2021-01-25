@@ -24,16 +24,6 @@ TYPE_SPEED=18
 # hide the evidence
 clear
 
-DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
-pe "pe az acr repository list -n tanzuregistry"
-echo
-
-#TBS
-DEMO_PROMPT="${GREEN}➜ TBS ${CYAN}\W "
-
-pe "kubectl config use-context tanzu-build-service"
-echo
-
 
 DEMO_PROMPT="${GREEN}➜ TKG ${CYAN}\W "
 pe "tkg get clusters"
@@ -48,14 +38,15 @@ pe "gcloud container clusters list --region us-east1 --format='table(name,master
 echo
 
 DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
-pe "pe az acr repository list -n tanzuregistry"
+pe "az acr repository list -n tanzuregistry"
 echo
+
 
 #TBS
 DEMO_PROMPT="${GREEN}➜ TBS ${CYAN}\W "
-
 pe "kubectl config use-context tanzu-build-service"
 echo
+
 
 pe "kp image list"
 echo
@@ -63,6 +54,10 @@ echo
 #CREATE IMAGES NOW - DURING EXECUTION EXPLAIN COMMAND PARAMS, LIST ALL TARGET CLUSTERS, CHECK STATUS or CHECK BUILD LOGS
 pe "kp image create spring-music --tag tanzuregistry.azurecr.io/spring-music --git https://github.com/cloudfoundry-samples/spring-music.git"
 pe "kp image create aspnet-core --tag tanzuregistry.azurecr.io/aspnet-core --git https://github.com/nycpivot/dotnet-docker.git"
+echo
+
+DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
+pe "az acr repository list -n tanzuregistry"
 echo
 
 pe "kp image status spring-music"
