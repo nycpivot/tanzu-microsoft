@@ -78,6 +78,13 @@ tmc cluster delete tanzu-azure-gke-aspnet-core
 tmc cluster delete tanzu-azure-tkg-aspnet-core
 tmc cluster delete tanzu-azure-aks-aspnet-core
 
+#TBC ATTACH TWO CLUSTERS
+read -p "tmc tanzu-azure-gke-aspnet-core attach url: " gke_attach_url
+
+kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
+$gke_attach_url
+
+sleep 5m
 
 read -p "tmc tanzu-azure-tkg-aspnet-core attach url: " tkg_attach_url
 
@@ -86,16 +93,7 @@ $tkg_attach_url
 
 sleep 5m
 
-read -p "tmc tanzu-azure-gke-aspnet-core attach url: " gke_attach_url
-
-kubectl config use-context gke_pa-mjames_us-east1_tanzu-azure-gke-aspnet-core
-$gke_attach_url
-
-sleep 5m
-
 read -p "PRESS ANY KEY TO TO CREATE TKG SECRET" ok
-kubectl config use-context tanzu-azure-tkg-aspnet-core-admin@tanzu-azure-tkg-aspnet-core
-
 kubectl create secret docker-registry tanzuregistry-secret \
 	--docker-server=${acr_server} \
 	--docker-username=${acr_user} \

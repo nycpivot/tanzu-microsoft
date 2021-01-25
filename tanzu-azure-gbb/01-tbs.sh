@@ -56,10 +56,6 @@ pe "kp image create spring-music --tag tanzuregistry.azurecr.io/spring-music --g
 pe "kp image create aspnet-core --tag tanzuregistry.azurecr.io/aspnet-core --git https://github.com/nycpivot/dotnet-docker.git"
 echo
 
-DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
-pe "az acr repository list -n tanzuregistry"
-echo
-
 pe "kp image status spring-music"
 echo
 
@@ -70,4 +66,8 @@ pe "kp build logs spring-music"
 echo
 
 pe "kp image list"
+echo
+
+DEMO_PROMPT="${GREEN}➜ ACR ${CYAN}\W "
+pe "az acr repository list -n tanzuregistry"
 echo
