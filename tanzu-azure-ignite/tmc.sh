@@ -24,7 +24,7 @@ TYPE_SPEED=18
 # hide the evidence
 clear
 
-DEMO_PROMPT="${GREEN}➜ AKS ${CYAN}\W "
+DEMO_PROMPT="${GREEN}➜ TMC ${CYAN}\W "
 
 #TMC PORTAL - ATTACH AKS CLUSTER
 pe "kubectl get ns"
